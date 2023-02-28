@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}Campaign Generator{% endblock %}
+{% block content %}
+    <style>
+        .form-control{
+            margin-bottom: 10px;
+        }
+        .impInstuctions{
+            font-size: 15px;
+            color: tomato;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .clearHistoryBtn:hover{
+            cursor: pointer;
+        }
+    </style>
+    <div class="container">
+        <div class="form-div" style="margin-top: 100px;">
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button style="background: none;border-style: none" type="button" class="close float-right" data-dismiss="alert" aria-label="Close">
+                    
+                  </button>
+                {{ message }}
+                </div>
+            {% endfor %}
+            <h3>Generate Campaign</h3>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#impInstructions" class="impInstuctions">Read Important Instructions</a> &nbsp;&nbsp;&nbsp; <span style="color: purple">Total Emails: {{ TotalEmails }}</span>&nbsp;&nbsp;&nbsp;<span style="color:green">Total Sent: {{ TotalSent }}</span>
+            {% if TotalSent > 0 %}<span data-bs-target="#deleteHistoryModal" data-bs-toggle="modal" class="clearHistoryBtn" style="color:red;float:right;">Clear History</span>{% endif %}
+            <form action="{% url 'SendEmails' %}" method="post">
+                {% csrf_token %}
+                <input type="number" class="form-control" placeholder="From {{ TotalSent|add:1 }}" name="fromLimit" required>
+                <input type="number" class="form-control" placeholder="To {{ TotalSent|add:50 }}" name="toLimit" required>
+                <input type="text" class="form-control" placeholder="Subject" name="subject" required>
+                <textarea placeholder="Enter your message or update templates/campaign.html file. Please leave this field empty if you want to send only template body content." class="form-control" name="mailbody" id="" cols="30" rows="10"></textarea><br>
+                <button class="form-control btn btn-success" type="submit">Start</button>
+            </form>
+        </div>
+    </div>
+    <!--Modal for important instructions-->
+    <div class="modal fade" id="impInstructions" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Important Instructions</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="font-size: 14px;">
+                1) Don't refresh the page or close the window, once you started the campaign.<br>
+                2) You can send emails from 1-50 per batch, once you sent 1-50 emails, then increase the limit from 51-100 and so on according to your total emails.<br>
+                3) Don't send more than 100 emails per day (2 batches per day).<br>
+                4) You can add your message to the message body and it will be added to the end but you can edit templates/email-template.html file to edit email body.<br>
+                5) Always clear history for starting a new campaign.
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-bs-dismiss="modal" class="btn btn-success">Understood</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Modal for deleting history-->
+     <div class="modal fade" id="deleteHistoryModal" data-bs-backdrop="newstatic" data-bs-keyboard="false" tabindex="-1" aria-labelledby="warningBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="warningBackdropLabel">Irreversible process</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete campaigns history?
+            </div>
+            <div class="modal-footer">
+              <a href="{% url 'DelCampaigns' %}" class="btn btn-danger">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+{% endblock %}

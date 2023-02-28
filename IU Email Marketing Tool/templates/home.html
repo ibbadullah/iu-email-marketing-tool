@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}IUK Email Marketing Tool{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="form-div">
+            <h3>Login</h3>
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button style="background: none;border-style: none" type="button" class="close float-right" data-dismiss="alert" aria-label="Close">
+                    
+                  </button>
+                {{ message }}
+                </div>
+            {% endfor %}
+            <form action="{% url 'HomeView' %}" method="post">
+                {% csrf_token %}
+                <input type="text" class="form-control" placeholder="Enter your username" name="username" required><br>
+                <input type="password" class="form-control" placeholder="Enter your password" name="password" required><br>
+                <button class="form-control btn btn-success" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

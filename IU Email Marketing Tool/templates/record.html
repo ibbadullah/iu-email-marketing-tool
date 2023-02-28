@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Track Record{% endblock %}
+{% block content %}
+<style>
+  footer{
+    margin-top: 500px !important;
+  }
+</style>
+    <div class="container">
+        <div class="form-div" style="margin-top: 100px;width: 70%;margin-left: 15%;">
+            <h3>Campaign History (Last 50 Emails)
+              {% if TotalSent > 0 %}<span data-bs-target="#deleteHistoryModal" data-bs-toggle="modal" class="clearHistoryBtn" style="color:red;float:right;font-size: 16px;cursor: pointer;">Clear History</span>{% endif %}
+            
+            </h3>
+            {% if Data.count >= 1 %}
+              <table class="table table-bordered" style="background-color:white">
+                <thead>
+                  <tr>
+                    <th scope="col">Email</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Send date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for data in Data %}
+                    <tr>
+                      <td>{{ data.emailId.email }}</td>
+                      <td style="color:green">{{ data.status }}</td>
+                      <td>{{ data.date }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+              <p>Sorry no record was found.</p>
+            {% endif %}
+        </div>
+    </div>
+    <!--Modal for deleting history-->
+    <div class="modal fade" id="deleteHistoryModal" data-bs-backdrop="newstatic" data-bs-keyboard="false" tabindex="-1" aria-labelledby="warningBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="warningBackdropLabel">Irreversible process</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              Are you sure to delete campaigns history?
+          </div>
+          <div class="modal-footer">
+            <a href="{% url 'DelCampaigns' %}" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

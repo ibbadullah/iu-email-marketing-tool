@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Completed!{% endblock %}
+{% block content %}
+    <style>
+    footer{
+        margin-top: 400px !important;
+    }
+    </style>
+    <div class="container">
+        <div class="form-div" style="margin-top: 230px;width: 70%;margin-left: 15%;text-align: center;">
+            <h3 style="color:green">Completed!</h3>
+            <p style="color:green">Emails are sent successfully. Click here to check <a style="color: green" href="{% url 'EmailsRecord' %}">emails history</a>.</p>
+        </div>
+    </div>
+    
+{% endblock %}

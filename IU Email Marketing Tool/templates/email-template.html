@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ Title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+body{
+    background-color:white;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.backgroundDiv{
+    height: auto;
+    width: 100%;
+    margin-left: 0%;
+    overflow: hidden;
+
+}
+.bodyContent{
+    border: 1px solid gainsboro;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+.container{
+     width: 100%;
+}
+
+.logoDiv{
+    text-align: left;
+}
+.logoDiv p{
+    font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+    margin: 0px;
+    padding: 0p;   
+}
+.logo{
+    width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+    position: center;
+
+}
+.titleDiv{
+    width: 100%;
+    text-align: center;
+    background-color: darkslategrey;
+}
+.titleDiv h1{
+    color: white;
+    font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+    font-size: 24px;
+    line-height: 100px;
+    font-weight: 500;
+    margin-top: 0px;
+}
+.container p{
+    font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    color: darkslategrey;
+    line-height: 25px;
+    font-weight: 400;
+    margin:25px 15px 25px 15px ;
+}
+
+.container .link{
+    color: darkorange;
+    font-weight: bold;
+    text-decoration: none;
+}
+.container .link:hover{
+    color: darkorange;
+    opacity: 0.9;
+    text-decoration: none;
+}
+
+.hr{
+    width: 90%;
+    margin-left: 5%;
+    background-color: gainsboro !important;
+    height: 1px;
+    border-style: none;
+}
+.btn{
+    background-color: darkorange;
+    color: white;
+    width: 60%;
+    margin-left: 20%;
+    height: 45px;
+    font-weight: 400;
+    font-family: Calibri;
+    font-size: 22px;
+    text-decoration: none;
+    border-style: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.btn:hover{
+    color: white;
+    opacity: 0.8;
+}
+.bottomDiv{
+    text-align: center;
+}
+.bottomDiv h5{
+    font-family: Calibri;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    color: dimgrey;
+}
+.bottomDiv a{
+    margin: 3px;
+    text-decoration: none;
+}
+.bottomDiv a img{
+    padding: 3px;
+    width: 35px;
+    height: 35px;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+}
+.bottomDiv a img:hover{
+    opacity: 0.8;
+}
+.copyrightText{
+    text-align: center;
+    font-family: Calibri !important;
+    font-size: 15px !important;
+    color: grey !important;
+    margin-bottom: 10px !important;
+}
+.domain-name{
+    color: orange;
+    text-decoration: none;
+}
+.footer-link{
+    text-decoration: none;
+    color: grey !important;
+}
+
+/* Designing for mobile screens*/
+ @media only screen and (max-width: 480px) {
+     .logo{
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .titleDiv h1{
+        color: white;
+        font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+        font-size: 18px;
+        line-height: 60px;
+    }
+
+    .container{
+        width: 100%;
+    }
+
+    .container p{
+
+        font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+        font-size: 15px;
+        color: darkslategrey;
+        line-height: 21px;
+        font-weight: 400;
+        margin:20px 6px 6px 15px;
+
+
+    }
+    .btn{
+        font-weight: 400;
+        width: 80%;
+        margin-left: 10%;
+    }
+    .copyrightText{
+        font-size: 12px !important;
+    }
+ }
+
+  </style>
+</head>
+<body>
+
+
+<br>
+<br>
+
+<div class="backgroundDiv">
+<div class="logoDiv">
+    <a href="https://20services.com/">
+        <img class="logo" src="https://20services.com/wp-content/uploads/2022/11/smalllogoBlack.png" alt="20services.com"/>
+    </a>
+</div>
+
+    <div class="bodyContent">
+<div class="titleDiv">
+    <h1>Subject</h1>
+</div>
+
+<div class="container">
+
+     <p>
+        Hi there,<br><br>
+        Please change the content of this template according to your requirements. You can also put any <a class="link" href="#">Link</a>. <br>
+	{{ Message }}<br>
+	Thank you.
+     </p>
+    <br>
+    <hr class="hr">
+    <div class="bottomDiv">
+        <h5>Follow us</h5>
+            <a target="_blank" href="https://www.facebook.com/20servicesofficial/"><img src="https://cdn.pixabay.com/photo/2017/06/22/06/22/facebook-2429746_960_720.png" alt="Facebook" class="socailIcons"></a>
+    </div>
+    <br>
+    <p class="copyrightText">&copy;&nbsp;2023 <a class="footer-link" href="https://20services.com/">20services</a>, Address of the company</p>
+      </div>
+         </div>
+  </div>
+<br>
+
+
+</body>
+</html>
